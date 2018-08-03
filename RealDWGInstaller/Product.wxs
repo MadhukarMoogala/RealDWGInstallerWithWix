@@ -139,12 +139,12 @@
               <!--Two registry components to create OBJECTDBX Application-->
               <Component Id="ODBX_REG1" Guid="{F51B4A81-B84A-4292-AC3B-09773FE41BF0}" KeyPath="yes" Shared="yes" SharedDllRefCount="yes" Win64="yes">
               <CreateFolder Directory="AutodeskShared" />
-              <RegistryKey Id="ObjectDBX.reg01" ForceCreateOnInstall="yes" Key="Software\Autodesk\ObjectDBX" Root="HKLM" />
+              <RegistryKey Id="reg01.{C28EF652-0E81-40F4-85D4-CE775B99A481}" ForceCreateOnInstall="yes" Key="Software\Autodesk\ObjectDBX" Root="HKLM" />
             </Component>
             <Component Id="ODBX_REG2" Guid="{429DF92A-458A-4E56-BADD-E1B028C27CB7}" KeyPath="yes" Shared="yes" SharedDllRefCount="yes" Win64="yes">
               <CreateFolder Directory="AutodeskShared" />
-              <RegistryKey Id="ObjectDBX.reg02" ForceCreateOnInstall="yes" Key="Software\Autodesk\ObjectDBX\[OBJDBXVERSION]" Root="HKLM" />
-              <RegistryKey Id="ObjectDBX.reg03" ForceCreateOnInstall="yes" Key="Software\Autodesk\ObjectDBX\[OBJDBXVERSION]\Applications" Root="HKLM" />
+              <RegistryKey Id="reg02.{EAB73AA2-7CC2-4CBF-BA88-AD53FE0CE81F}" ForceCreateOnInstall="yes" Key="Software\Autodesk\ObjectDBX\[OBJDBXVERSION]" Root="HKLM" />
+              <RegistryKey Id="reg03.{123E3EFB-591F-47A9-8E73-AD099FB2D4D8}" ForceCreateOnInstall="yes" Key="Software\Autodesk\ObjectDBX\[OBJDBXVERSION]\Applications" Root="HKLM" />
             </Component>
               <Directory Id="AutodeskSharedLANG" Name="en-US"/>
             </Directory>
