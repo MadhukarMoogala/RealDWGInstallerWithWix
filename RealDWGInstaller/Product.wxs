@@ -1,17 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-//
-//////////////////////////////////////////////////////////////////////////////
-//
-//  Copyright 2018 Autodesk, Inc.  All rights reserved.
-//
-//  Use of this software is subject to the terms of the Autodesk license 
-//  agreement provided at the time of installation or download, or which 
-//  otherwise accompanies this software in either electronic or hard copy form.   
-//
-//////////////////////////////////////////////////////////////////////////////
-//
--->
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <?include varDefines.wxi?>
   <Product Id="$(var.PackageGuid)" Name="!(loc.ProductName)"
