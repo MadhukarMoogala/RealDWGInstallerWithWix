@@ -1,0 +1,38 @@
+Copyright 2018 Autodesk, Inc.  All rights reserved.
+
+Use of this software is subject to the terms of the Autodesk license 
+agreement provided at the time of installation or download, or which 
+otherwise accompanies this software in either electronic or hard copy form.   
+
+This console application prints the values of database data members. 
+It uses the dumpcore.cpp module for walking through the DWG file.
+
+Project Type     Console Application
+
+Usage: dumpdwg <-chtver> file.dwg
+
+	default     print symbol tables
+	-h          print header vars
+	-v          verbose: print entities
+	-vv         really verbose: print entity members
+	-c          copy
+	-cr2000     save as a R2000 dwg file
+	-t          dump tables (viewport, dim, etc)
+	-e          dump erased entities
+	-r          resolve xrefs
+	-?          help message
+
+Executables      dumpdwg.exe   
+
+Makefiles        dumpdwg.dsp  
+
+Modules          dumpdwg.cpp            dumpcore.cpp
+                 myacgi.cpp             dir.cpp
+                 maps.cpp
+
+Additional       ..\             ..\..\inc    
+include 
+directories
+
+ACDB libraries   acgiapi.lib     acge23.lib        acdb23.lib 
+                 rxapi.lib

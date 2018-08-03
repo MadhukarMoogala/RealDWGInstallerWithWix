@@ -8,11 +8,15 @@
 *.user
 *.userosscache
 *.sln.docstates
-
+*.msi
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
+**\*.tlog
+*.lastbuildstate
 
 # Build results
+dumpdwg.exe
+dumpdwg.pdb
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/

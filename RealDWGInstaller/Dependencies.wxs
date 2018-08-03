@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Notes:
+To understand better on ConfigurationData in Merge [Redirection of MSM Module files to Directory], 
+you can use WiX Decompiler (dark)[%WIX%\Bin\Dark] operation  to decompile to WXS
+You 'll find 'Configuration', changing whose value at the time of installation is whole point of ConfigurationData
+-->
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <?include varDefines.wxi?>
+  <Fragment>
+    <DirectoryRef Id="INSTALLDIR" DiskId="1">   
+      <!--Our Test sample that we are packaging-->
+      <Component Id="CMP_dumpdwg" Guid="{223E65B0-3CF8-41C5-A4A6-1BD3FFF76919}">
+        <File Id="File_dumpdwg" Source="$(var.SolutionDir)Output\dumpdwg.exe"/>
+      </Component>
+      <!--Test drawing to simulate behavior on Target Machine-->
+      <Component Id="CMP_TestDrawing" Guid="{58EDEFE9-5F26-4C0A-AA82-FA32356AD854}">
+        <File Id="File_TestDrawing" Source="$(var.SolutionDir)Output\Kitchens.dwg"/>
+      </Component>
+      <!--Mergemodule as available in RealDWG Redistribute Directory-->
+      <Merge Id="AcAtil_Glob.msm"
+      SourceFile="$(var.Redistrib)/AcAtil_Glob.msm"
+      Language="0"/>
+      <Merge Id="AcAtil_Loc.msm"
+      SourceFile="$(var.Redistrib)/AcAtil_Loc.msm"
+      Language="0"/>
+      <Merge Id="acdbmgd.msm"
+      SourceFile="$(var.Redistrib)/acdbmgd.msm"
+      Language="0"/>
+      <Merge Id="AcIdViewObj.msm"
+      SourceFile="$(var.Redistrib)/AcIdViewObj.msm"
+      Language="0"/>
+      <Merge Id="AcModelDoc_glob.msm"
+      SourceFile="$(var.Redistrib)/AcModelDoc_glob.msm"
+      Language="0"/>
+      <Merge Id="AcModelDoc_loc.msm"
+      SourceFile="$(var.Redistrib)/AcModelDoc_loc.msm"
+      Language="0"/>
+      <Merge Id="AcMPolygonObj.msm"
+      SourceFile="$(var.Redistrib)/AcMPolygonObj23.msm"
+      Language="0"/>
+      <Merge Id="AcSmComponents.msm"
+      SourceFile="$(var.Redistrib)/AcSmComponents.msm"
+      Language="0"/>
+      <Merge Id="AdSpatialReference"
+      SourceFile="$(var.Redistrib)/AdSpatialReference.msm"
+      Language="0"/>
+      <?if $(var.is64bit) = true?>
+      <Merge Id="aecAppSvr.msm"
+        SourceFile="$(var.Redistrib)/aecAppSvr.msm"
+        Language="1033" >
+        <!--We would like redirect MSM Module files to AutodeskShared32 i.e RootDrive\Program Files (x86)\Common Files\Autodesk Shared\ -->
+        <ConfigurationData Name="DIR_AUTODESKSHARED32" Value="AutodeskShared32"/>
+      </Merge>
+      <?endif?>
+      <Merge Id="aecbdbx.msm"
+      SourceFile="$(var.Redistrib)/aecbdbx.msm"
+      Language="0"/>
+      <Merge Id="aecbdbx_PS.msm"
+      SourceFile="$(var.Redistrib)/aecbdbx_PS.msm"
+      Language="0"/>
+      <Merge Id="aecbdbx_res.msm"
+      SourceFile="$(var.Redistrib)/aecbdbx_res.msm"
+      Language="0">
+        <!--We would like redirect MSM Module files to INSTALLDIRLANG i.e RootDrive \Program Files\ADN Works Inc\DumpDWG\en-US\ -->
+        <ConfigurationData Name="DIR_INSTALLDIRLANG_RES" Value="INSTALLDIRLANG"/>
+      </Merge>
+      <Merge Id="aecmodeler.msm"
+      SourceFile="$(var.Redistrib)/aecmodeler.msm"
+      Language="0"/>
+      <Merge Id="aecres.msm"
+      SourceFile="$(var.Redistrib)/aecres.msm"
+      Language="0"/>
+      <Merge Id="aecres_res.msm"
+      SourceFile="$(var.Redistrib)/aecres_res.msm"
+      Language="0">
+        <ConfigurationData Name="DIR_INSTALLDIRLANG_RES" Value="INSTALLDIRLANG"/>
+      </Merge>
+      <Merge Id="aecsola.msm"
+      SourceFile="$(var.Redistrib)/aecsola.msm"
+      Language="0"/>
+      <Merge Id="aecsola_ps.msm"
+      SourceFile="$(var.Redistrib)/aecsola_ps.msm"
+      Language="0"/>
+      <Merge Id="aecsola_res.msm"
+      SourceFile="$(var.Redistrib)/aecsola_res.msm"
+      Language="0">
+        <ConfigurationData Name="DIR_INSTALLDIRLANG_RES" Value="INSTALLDIRLANG"/>
+      </Merge>
+      <Merge Id="aecsoa.msm"
+      SourceFile="$(var.Redistrib)/aecsoa.msm"
+      Language="0"/>
+      <Merge Id="aecsoa_PS.msm"
+      SourceFile="$(var.Redistrib)/aecsoa_PS.msm"
+      Language="0"/>
+      <Merge Id="aecsoa_res.msm"
+      SourceFile="$(var.Redistrib)/aecsoa_res.msm"
+      Language="0">
+        <ConfigurationData Name="DIR_INSTALLDIRLANG_RES" Value="INSTALLDIRLANG"/>
+      </Merge>
+      <Merge Id="asm_acad.msm"
+      SourceFile="$(var.Redistrib)/asm$(var.ASMFILEVER)_acad.msm"
+      Language="0"/>
+      <Merge Id="DGNIO_Glob.msm"
+      SourceFile="$(var.Redistrib)/DGNIO_Glob.msm"
+      Language="0"/>
+      <Merge Id="ETransmitGlob.msm"
+      SourceFile="$(var.Redistrib)/ETransmitGlob.msm"
+      Language="0"/>
+      <Merge Id="ETransmitLoc.msm"
+      SourceFile="$(var.Redistrib)/ETransmitLoc.msm"
+      Language="0"/>
+      <Merge Id="ETransmitUtility.msm"
+      SourceFile="$(var.Redistrib)/ETransmitUtility.msm"
+      Language="0"/>
+      <Merge Id="MDTSHX.msm"
+      SourceFile="$(var.Redistrib)/MDTSHX.msm"
+      Language="0">
+        <!-- 
+        Data to use as input to a configurable merge module.
+        We would like to redirect MSM Module files to Fonts folder
+        If there is no configurable merge module table, it 'll fallback to INSTALLDIR
+        -->
+        <ConfigurationData Name="DIR_RETARGET_TARGETDIR2" Value="Fonts"/>
+      </Merge>
+      <Merge Id="MentorGridFiles"
+      SourceFile="$(var.Redistrib)/MentorGridFiles64.msm"
+      Language="1033"/>
+      <Merge Id="MPolygonCom_glob.msm"
+      SourceFile="$(var.Redistrib)/MPolygonCom$(var.ACADRELVER)_glob.msm"
+      Language="0"/>
+      <Merge Id="mpolygoncomEnu.msm"
+      SourceFile="$(var.Redistrib)/mpolygoncom$(var.ACADRELVER)enu.msm"
+      Language="0"/>
+      <Merge Id="MPolygonObjEnu.msm"
+      SourceFile="$(var.Redistrib)/MPolygonObj$(var.ACADRELVER)enu.msm"
+      Language="0"/>
+      <!--<Merge Id="Objdbx.msm"
+      SourceFile="$(var.Redistrib)/Objdbx.msm"
+      Language="0"/>-->
+      <Merge Id="OdbxExtra.msm"
+      SourceFile="$(var.Redistrib)/Odbx$(var.ACADRELVER)Extra.msm"
+      Language="0">
+        <ConfigurationData Name="DIR_RETARGET_TARGETDIR2" Value="Fonts"/>
+      </Merge>
+      <Merge Id="OdbxAsm_fullGlob.msm"
+      SourceFile="$(var.Redistrib)/OdbxAsm_full$(var.ACADRELVER)glob.msm"
+      Language="0"/>
+      <Merge Id="OdbxAutoLoc.msm"
+      SourceFile="$(var.Redistrib)/OdbxAuto$(var.ACADRELVER)enu.msm"
+      Language="0"/>
+      <Merge Id="OdbxAutoGlob.msm"
+      SourceFile="$(var.Redistrib)/OdbxAuto$(var.ACADRELVER)glob.msm"
+      Language="0"/>
+      <Merge Id="OdbxBrep.msm"
+      SourceFile="$(var.Redistrib)/OdbxBrep$(var.ACADRELVER).msm"
+      Language="0"/>
+      <Merge Id="OdbxCoreGlob.msm"
+      SourceFile="$(var.Redistrib)/OdbxCore$(var.ACADRELVER)glob.msm"
+      Language="0"/>
+      <Merge Id="OdbxCoreGlob_PS.msm"
+      SourceFile="$(var.Redistrib)/OdbxCore$(var.ACADRELVER)glob_PS.msm"
+      Language="0"/>
+      <Merge Id="OdbxCoreLoc.msm"
+      SourceFile="$(var.Redistrib)/OdbxCore$(var.ACADRELVER)loc.msm"
+      Language="0"/>
+      <Merge Id="PointCloudGlob.msm"
+      SourceFile="$(var.Redistrib)/PointCloudGlob.msm"
+      Language="0"/>
+      <?if $(var.is64bit) = true?>
+      <Merge Id="PointCloudReCapGlob"
+      SourceFile="$(var.Redistrib)/PointCloudReCapGlob.msm"
+      Language="0"/>
+      <Merge Id="PointCloudLoc.msm"
+      SourceFile="$(var.Redistrib)/PointCloudLoc.msm"
+      Language="0"/>
+      <?endif?>
+      <Merge Id="tbb.msm"
+      SourceFile="$(var.Redistrib)/tbb.msm"
+      Language="0"/>
+      <Merge Id="SmartCenterDbx.msm"
+      SourceFile="$(var.Redistrib)/SmartCenterDbx.msm"
+      Language="0"/>
+      <Merge Id="SmartCenterDbxRes.msm"
+      SourceFile="$(var.Redistrib)/SmartCenterDbxRes.msm"
+      Language="0"/>
+      <Merge Id="Xerces.msm"
+      SourceFile="$(var.Redistrib)/xerces.msm"
+      Language="0"/>
+      <!--RealDWG Redistributale-Finished-->
+      <!--Microsoft Redistrib-->
+      <Merge Id="Microsoft_VC140_MFCLOC_x64.msm" 
+      SourceFile="$(var.MSRedistrib)/Microsoft_VC$(var.VCVER)_MFCLOC_x64.msm" 
+      Language="0"/>
+      <Merge Id="Microsoft_VC140_MFC_x64.msm"
+      SourceFile="$(var.MSRedistrib)/Microsoft_VC$(var.VCVER)_MFC_x64.msm" 
+      Language="0"/>
+      <Merge Id="Microsoft_VC140_OpenMP_x64.msm"
+      SourceFile="$(var.MSRedistrib)/Microsoft_VC$(var.VCVER)_OpenMP_x64.msm" 
+      Language="0"/>
+      <Merge Id="Microsoft_VC140_CRT_x64.msm" 
+       SourceFile="$(var.MSRedistrib)/Microsoft_VC$(var.VCVER)_CRT_x64.msm"
+       Language="0"/>
+      <!--Microsoft Redistrib Finished-->      
+    </DirectoryRef>
+    <!--Fonts-->
+    <DirectoryRef Id="Fonts">
+      <Merge Id="LDTFonts.msm"
+      SourceFile="$(var.Redistrib)/LDTFonts.msm"
+      DiskId="1"
+      Language="0" />
+    </DirectoryRef>  
+  </Fragment>
+</Wix>

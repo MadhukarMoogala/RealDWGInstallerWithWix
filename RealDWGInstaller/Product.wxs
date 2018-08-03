@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+//
+//////////////////////////////////////////////////////////////////////////////
+//
+//  Copyright 2018 Autodesk, Inc.  All rights reserved.
+//
+//  Use of this software is subject to the terms of the Autodesk license 
+//  agreement provided at the time of installation or download, or which 
+//  otherwise accompanies this software in either electronic or hard copy form.   
+//
+//////////////////////////////////////////////////////////////////////////////
+//
+-->
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <?include varDefines.wxi?>
+  <Product Id="$(var.PackageGuid)" Name="!(loc.ProductName)"
+           Language="1033" Codepage="1252" 
+           Version="1.0.0.0" Manufacturer="!(loc.Manufacturer)"
+           UpgradeCode="c82aef02-ada7-47ba-adc9-17b6d3398d15">
+<!--Package Begins-->
+    <Package InstallerVersion="405" Compressed="yes"
+             InstallScope="perMachine" Comments="!(loc.Comments)"
+             Manufacturer="!(loc.Manufacturer)" Keywords="!(loc.Keywords)"
+             SummaryCodepage="1252" Languages="1033"
+             Description="!(loc.Description)" Platform="x64"/>
+<!--Package Ends-->
+
+    <MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeErrorMessage)" />
+    <MediaTemplate EmbedCab="yes"/>
+    <!--Custom UI Dialogs-->
+    <WixVariable Id="WixUILicenseRtf" Value="$(var.MyResources)\AcCopyrights.rtf" />
+    <WixVariable Id="WixUIBannerBmp" Value="$(var.MyResources)\TopBanner.bmp" />
+    <WixVariable Id="WixUIDialogBmp" Value="$(var.MyResources)\Dialog.bmp" />
+    <Property Id="WIXUI_INSTALLDIR" Value="TARGETDIR" />
+    <!--WIX in-built UI-->
+    <UIRef Id="WixUI_InstallDir"/>
+    <!--Custom UI Dialogs-->
+    <!--Autodesk CMSMs require the ODBXHOSTAPPGLOROOT and ODBXHOSTAPPREGROOT properties to be set in the MSI .-->
+    <Property Id="ODBXHOSTAPPREGROOT" Value="Software\ADNCAD\$(var.ACADENGINEVER)"/>
+    <Property Id="ODBXHOSTAPPGLOROOT" Value="Software\ADNCAD\$(var.ACADENGINEVER)"/>
+    <Property Id="OBJDBXVERSION" Value="$(var.ACADENGINEVER)"/>
+    <!--Property override-->
+    <CustomAction Id="DIRCA_TARGETDIR1" Property="TARGETDIR" Value="[ProgramFiles64Folder][Manufacturer]\[ProductName]"></CustomAction>
+
+    <InstallUISequence>
+      <Custom Action="DIRCA_TARGETDIR1" Before="CostFinalize" >NOT Installed</Custom>
+    </InstallUISequence>
+    <Feature Id="ProductFeature" Title="RealDWGInstaller" ConfigurableDirectory="TARGETDIR" Level="1">
+      <ComponentRef Id="CMP_dumpdwg" />
+      <ComponentRef Id="CMP_TestDrawing" />
+      <ComponentRef Id="ODBX_REG1"/>
+      <ComponentRef Id="ODBX_REG2"/>
+      <MergeRef Id="AcAtil_Glob.msm" />
+      <MergeRef Id="AcAtil_Loc.msm" />
+      <MergeRef Id="acdbmgd.msm" />
+      <MergeRef Id="AcIdViewObj.msm" />
+      <MergeRef Id="AcModelDoc_glob.msm" />
+      <MergeRef Id="AcModelDoc_loc.msm" />
+      <MergeRef Id="AcMPolygonObj.msm" />
+      <MergeRef Id="AcSmComponents.msm" />
+      <MergeRef Id="AdSpatialReference" />
+      <?if $(var.is64bit) = true?>
+      <MergeRef Id="aecAppSvr.msm" />
+      <?endif?>
+      <MergeRef Id="aecbdbx.msm" />
+      <MergeRef Id="aecbdbx_PS.msm" />
+      <MergeRef Id="aecbdbx_res.msm" />
+      <MergeRef Id="aecmodeler.msm" />
+      <MergeRef Id="aecres.msm" />
+      <MergeRef Id="aecres_res.msm" />
+      <MergeRef Id="aecsola.msm" />
+      <MergeRef Id="aecsola_ps.msm" />
+      <MergeRef Id="aecsola_res.msm" />
+      <MergeRef Id="aecsoa.msm" />
+      <MergeRef Id="aecsoa_PS.msm" />
+      <MergeRef Id="aecsoa_res.msm" />
+      <MergeRef Id="asm_acad.msm" />
+      <MergeRef Id="DGNIO_Glob.msm" />
+      <MergeRef Id="ETransmitGlob.msm" />
+      <MergeRef Id="ETransmitLoc.msm" />
+      <MergeRef Id="ETransmitUtility.msm" />
+      <MergeRef Id="LDTFonts.msm" />
+      <MergeRef Id="MentorGridFiles"/>
+      <MergeRef Id="MDTSHX.msm" />
+      <MergeRef Id="MPolygonCom_glob.msm" />
+      <MergeRef Id="mpolygoncomEnu.msm" />
+      <MergeRef Id="MPolygonObjEnu.msm" />
+      <!-- To avoid merge collisions
+      <MergeRef Id="Objdbx.msm" />
+      -->
+      <MergeRef Id="OdbxExtra.msm" />
+      <MergeRef Id="OdbxAsm_fullGlob.msm" />
+      <MergeRef Id="OdbxAutoLoc.msm" />
+      <MergeRef Id="OdbxAutoGlob.msm" />
+      <MergeRef Id="OdbxBrep.msm" />
+      <MergeRef Id="OdbxCoreGlob.msm" />
+      <MergeRef Id="OdbxCoreGlob_PS.msm" />
+      <MergeRef Id="OdbxCoreLoc.msm" />
+      <MergeRef Id="PointCloudGlob.msm" />
+      <?if $(var.is64bit) = true?>
+      <MergeRef Id="PointCloudLoc.msm" />
+      <MergeRef Id="PointCloudReCapGlob"/>
+      <?endif?>
+      <MergeRef Id="tbb.msm"/>
+      <MergeRef Id="SmartCenterDbx.msm"/>
+      <MergeRef Id="SmartCenterDbxRes.msm"/>
+      <MergeRef Id="Xerces.msm"/>
+      <MergeRef Id="Microsoft_VC140_MFCLOC_x64.msm"/>
+      <MergeRef Id="Microsoft_VC140_MFC_x64.msm"/>
+      <MergeRef Id="Microsoft_VC140_OpenMP_x64.msm"/>
+      <MergeRef Id="Microsoft_VC140_CRT_x64.msm"/>
+    </Feature>
+  </Product>
+
+  <Fragment>
+    <!--Design of Directory Structure
+    RootDrive [C:\]|
+	   -Program Files\ADN Works Inc\DumpDWG\
+	   -Program Files\Common Files\Autodesk Shared\en-US\
+	   -ProgramData\Autodesk
+	   -Program Files (x86)\Common Files\Autodesk Shared\
+		  INSTALLDIR=RootDrive\Program Files\ADN Works Inc\DumpDWG\
+      TARGETDIR=RootDrive\Program Files\ADN Works Inc\DumpDWG\
+      INSTALLDIRLANG=RootDrive\Program Files\ADN Works Inc\DumpDWG\en-US\
+     -->
+    <Directory Id="TARGETDIR" Name="SourceDir" >
+      <Directory Id="INSTALLDIR" SourceName="RealDWG">
+        <?if $(var.is64bit) = false?>
+        <Directory Id="ProgramFilesFolder" Name="Program Files">
+          <Directory Id="CommonFilesFolder" Name="Common Files">
+            <Directory Id="AutodeskShared32" Name="Autodesk Shared" />
+          </Directory>
+        </Directory>
+        <?else?>
+        <Directory Id="ProgramFiles64Folder" Name="Program Files">
+          <Directory Id="CommonFiles64Folder" Name="Common Files">
+            <Directory Id="AutodeskShared" Name="Autodesk Shared">
+              <!--Two registry components to create OBJECTDBX Application-->
+              <Component Id="ODBX_REG1" Guid="{F51B4A81-B84A-4292-AC3B-09773FE41BF0}" KeyPath="yes" Shared="yes" SharedDllRefCount="yes" Win64="yes">
+              <CreateFolder Directory="AutodeskShared" />
+              <RegistryKey Id="ObjectDBX.reg01" ForceCreateOnInstall="yes" Key="Software\Autodesk\ObjectDBX" Root="HKLM" />
+            </Component>
+            <Component Id="ODBX_REG2" Guid="{429DF92A-458A-4E56-BADD-E1B028C27CB7}" KeyPath="yes" Shared="yes" SharedDllRefCount="yes" Win64="yes">
+              <CreateFolder Directory="AutodeskShared" />
+              <RegistryKey Id="ObjectDBX.reg02" ForceCreateOnInstall="yes" Key="Software\Autodesk\ObjectDBX\[OBJDBXVERSION]" Root="HKLM" />
+              <RegistryKey Id="ObjectDBX.reg03" ForceCreateOnInstall="yes" Key="Software\Autodesk\ObjectDBX\[OBJDBXVERSION]\Applications" Root="HKLM" />
+            </Component>
+              <Directory Id="AutodeskSharedLANG" Name="en-US"/>
+            </Directory>
+          </Directory>
+        </Directory>
+        <Directory Id="ProgramFilesFolder" Name="Program Files">
+          <Directory Id="CommonFilesFolder" Name="Common Files">
+            <Directory Id="AutodeskShared32" Name="Autodesk Shared" />
+          </Directory>
+        </Directory>
+        <?endif?>
+        <Directory Id="Fonts" Name="Fonts"/>
+        <Directory Id="INSTALLDIRLANG" Name="en-US"/>
+      </Directory>
+    </Directory>
+  </Fragment>
+</Wix>

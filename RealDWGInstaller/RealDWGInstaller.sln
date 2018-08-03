@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "RealDWGInstaller", "RealDWGInstaller.wixproj", "{63ED5F73-D837-4E68-9173-ACE071320DC5}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dumpdwg", "..\DumpDWG\dumpdwg.vcxproj", "{4C1D69A1-B62D-46CC-85AC-F4A6BD2A45A1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		RealDWGInstall|x64 = RealDWGInstall|x64
+		RealDWGInstall|x86 = RealDWGInstall|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{63ED5F73-D837-4E68-9173-ACE071320DC5}.Debug|x64.ActiveCfg = Debug|x64
+		{63ED5F73-D837-4E68-9173-ACE071320DC5}.Debug|x64.Build.0 = Debug|x64
+		{63ED5F73-D837-4E68-9173-ACE071320DC5}.Debug|x86.ActiveCfg = Debug|x64
+		{63ED5F73-D837-4E68-9173-ACE071320DC5}.RealDWGInstall|x64.ActiveCfg = Debug|x64
+		{63ED5F73-D837-4E68-9173-ACE071320DC5}.RealDWGInstall|x64.Build.0 = Debug|x64
+		{63ED5F73-D837-4E68-9173-ACE071320DC5}.RealDWGInstall|x86.ActiveCfg = Release|x64
+		{63ED5F73-D837-4E68-9173-ACE071320DC5}.RealDWGInstall|x86.Build.0 = Release|x64
+		{63ED5F73-D837-4E68-9173-ACE071320DC5}.Release|x64.ActiveCfg = Debug|x64
+		{63ED5F73-D837-4E68-9173-ACE071320DC5}.Release|x64.Build.0 = Debug|x64
+		{63ED5F73-D837-4E68-9173-ACE071320DC5}.Release|x86.ActiveCfg = Release|x64
+		{4C1D69A1-B62D-46CC-85AC-F4A6BD2A45A1}.Debug|x64.ActiveCfg = Debug|x64
+		{4C1D69A1-B62D-46CC-85AC-F4A6BD2A45A1}.Debug|x64.Build.0 = Debug|x64
+		{4C1D69A1-B62D-46CC-85AC-F4A6BD2A45A1}.Debug|x86.ActiveCfg = Debug|Win32
+		{4C1D69A1-B62D-46CC-85AC-F4A6BD2A45A1}.Debug|x86.Build.0 = Debug|Win32
+		{4C1D69A1-B62D-46CC-85AC-F4A6BD2A45A1}.RealDWGInstall|x64.ActiveCfg = Debug|x64
+		{4C1D69A1-B62D-46CC-85AC-F4A6BD2A45A1}.RealDWGInstall|x64.Build.0 = Debug|x64
+		{4C1D69A1-B62D-46CC-85AC-F4A6BD2A45A1}.RealDWGInstall|x86.ActiveCfg = RealDWGInstall|Win32
+		{4C1D69A1-B62D-46CC-85AC-F4A6BD2A45A1}.RealDWGInstall|x86.Build.0 = RealDWGInstall|Win32
+		{4C1D69A1-B62D-46CC-85AC-F4A6BD2A45A1}.Release|x64.ActiveCfg = Debug|x64
+		{4C1D69A1-B62D-46CC-85AC-F4A6BD2A45A1}.Release|x64.Build.0 = Debug|x64
+		{4C1D69A1-B62D-46CC-85AC-F4A6BD2A45A1}.Release|x86.ActiveCfg = Release|Win32
+		{4C1D69A1-B62D-46CC-85AC-F4A6BD2A45A1}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9CE2AEE4-A2FE-45E1-B7DD-3276DB78697E}
+	EndGlobalSection
+EndGlobal
