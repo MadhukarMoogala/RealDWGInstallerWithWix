@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+    <RealDWGSDK>C:\rd22\RealDWG 2022</RealDWGSDK>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(RealDWGSDK)\Inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalUsingDirectories>$(RealDWGSDK);%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>ac1st24.lib;acdb24.lib;acdbmgd.lib;AcDbPointCloudObj.lib;acge24.lib;AcGeolocationObj.lib;acgeoment.lib;acgiapi.lib;acismobj24.lib;acModelDocObj.lib;AcMPolygonObj.lib;AcPal.lib;AcSceneOE.lib;axdb.lib;rxapi.lib</AdditionalDependencies>
+    </Link>
+    <Link>
+      <ModuleDefinitionFile>$(RealDWGSDK)\Inc\AcRxDefault.def"</ModuleDefinitionFile>
+      <AdditionalLibraryDirectories>$(RealDWGSDK)\Lib</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <BuildMacro Include="RealDWGSDK">
+      <Value>$(RealDWGSDK)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+  </ItemGroup>
+</Project>

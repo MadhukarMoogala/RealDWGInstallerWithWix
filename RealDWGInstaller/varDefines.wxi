@@ -2,15 +2,15 @@
 <Include>
   <?define PackageGuid=CE9C5F74-D97A-4AB9-8371-9422E5F3436C?>
   <!--RealDWG Redistributables-->
-  <?define Redistrib="$(env.REALDWG2019)\Redistrib"?>
+  <?define Redistrib="$(env.RealDWGSDK)\Redistrib"?>
   <?if $(var.Platform)=x64?>
   <?define is64bit=true?>
   <?endif?>  
   <!--ASM Version these will change from release to release-->
-  <?define ASMFILEVER=224?>
+  <?define ASMFILEVER=227?>
   <!--ACAD ENGINE and RELEASE version change from release to relase-->
-  <?define ACADRELVER=23?>
-  <?define ACADENGINEVER=R23.0?>
+  <?define ACADRELVER=24?>
+  <?define ACADENGINEVER=R24.1?>
   <?define MyResources="$(var.SolutionDir)\Resources"?>
   <!--MS Redistributables MFC, VCRuntime etc..-->
   <?define MSRedistrib="$(env.CommonProgramFiles(x86))\Merge Modules"?>

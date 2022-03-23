@@ -44,7 +44,7 @@
       <MergeRef Id="AcIdViewObj.msm" />
       <MergeRef Id="AcModelDoc_glob.msm" />
       <MergeRef Id="AcModelDoc_loc.msm" />
-      <MergeRef Id="AcMPolygonObj.msm" />
+      <MergeRef Id="AcMPolygonObj$(var.ACADRELVER).msm" />
       <MergeRef Id="AcSmComponents.msm" />
       <MergeRef Id="AdSpatialReference" />
       <?if $(var.is64bit) = true?>
@@ -92,7 +92,8 @@
       <MergeRef Id="tbb.msm"/>
       <MergeRef Id="SmartCenterDbx.msm"/>
       <MergeRef Id="SmartCenterDbxRes.msm"/>
-      <MergeRef Id="Xerces.msm"/>
+		<!--There is collision, xerces is already packed in aecsola.msm-->
+      <!--<MergeRef Id="Xerces.msm"/>-->
       <MergeRef Id="Microsoft_VC140_MFCLOC_x64.msm"/>
       <MergeRef Id="Microsoft_VC140_MFC_x64.msm"/>
       <MergeRef Id="Microsoft_VC140_OpenMP_x64.msm"/>
@@ -126,12 +127,12 @@
               <!--Two registry components to create OBJECTDBX Application-->
               <Component Id="ODBX_REG1" Guid="{F51B4A81-B84A-4292-AC3B-09773FE41BF0}" KeyPath="yes" Shared="yes" SharedDllRefCount="yes" Win64="yes">
               <CreateFolder Directory="AutodeskShared" />
-              <RegistryKey Id="reg01.{C28EF652-0E81-40F4-85D4-CE775B99A481}" ForceCreateOnInstall="yes" Key="Software\Autodesk\ObjectDBX" Root="HKLM" />
+              <RegistryKey Id="reg01" ForceCreateOnInstall="yes" Key="Software\Autodesk\ObjectDBX" Root="HKLM" />
             </Component>
             <Component Id="ODBX_REG2" Guid="{429DF92A-458A-4E56-BADD-E1B028C27CB7}" KeyPath="yes" Shared="yes" SharedDllRefCount="yes" Win64="yes">
               <CreateFolder Directory="AutodeskShared" />
-              <RegistryKey Id="reg02.{EAB73AA2-7CC2-4CBF-BA88-AD53FE0CE81F}" ForceCreateOnInstall="yes" Key="Software\Autodesk\ObjectDBX\[OBJDBXVERSION]" Root="HKLM" />
-              <RegistryKey Id="reg03.{123E3EFB-591F-47A9-8E73-AD099FB2D4D8}" ForceCreateOnInstall="yes" Key="Software\Autodesk\ObjectDBX\[OBJDBXVERSION]\Applications" Root="HKLM" />
+              <RegistryKey Id="reg02" ForceCreateOnInstall="yes" Key="Software\Autodesk\ObjectDBX\[OBJDBXVERSION]" Root="HKLM" />
+              <RegistryKey Id="reg03" ForceCreateOnInstall="yes" Key="Software\Autodesk\ObjectDBX\[OBJDBXVERSION]\Applications" Root="HKLM" />
             </Component>
               <Directory Id="AutodeskSharedLANG" Name="en-US"/>
             </Directory>

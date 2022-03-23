@@ -35,8 +35,8 @@ You 'll find 'Configuration', changing whose value at the time of installation i
       <Merge Id="AcModelDoc_loc.msm"
       SourceFile="$(var.Redistrib)/AcModelDoc_loc.msm"
       Language="0"/>
-      <Merge Id="AcMPolygonObj.msm"
-      SourceFile="$(var.Redistrib)/AcMPolygonObj23.msm"
+      <Merge Id="AcMPolygonObj$(var.ACADRELVER).msm"
+      SourceFile="$(var.Redistrib)/AcMPolygonObj$(var.ACADRELVER).msm"
       Language="0"/>
       <Merge Id="AcSmComponents.msm"
       SourceFile="$(var.Redistrib)/AcSmComponents.msm"
@@ -183,10 +183,14 @@ You 'll find 'Configuration', changing whose value at the time of installation i
       <Merge Id="SmartCenterDbxRes.msm"
       SourceFile="$(var.Redistrib)/SmartCenterDbxRes.msm"
       Language="0"/>
-      <Merge Id="Xerces.msm"
+		
+      <!--
+	 There is collision, xerces is already packed in aecsola.msm
+	  
+	  <Merge Id="Xerces.msm"
       SourceFile="$(var.Redistrib)/xerces.msm"
-      Language="0"/>
-      <!--RealDWG Redistributale-Finished-->
+      Language="0"/>-->
+      <!--RealDWG Redistributles-Finished-->
       <!--Microsoft Redistrib-->
       <Merge Id="Microsoft_VC140_MFCLOC_x64.msm" 
       SourceFile="$(var.MSRedistrib)/Microsoft_VC$(var.VCVER)_MFCLOC_x64.msm" 
